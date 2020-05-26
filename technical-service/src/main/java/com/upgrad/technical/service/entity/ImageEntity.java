@@ -11,41 +11,23 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 
-//Observe the "images" table schema in the database and complete "ImageEntity" class to map the object with database
-/*
-ID                                       SERIAL(PK)
-UUID                                     VARCHAR(36)
-IMAGE                                    VARCHAR(10000)
-NAME                                     VARCHAR(26)
-DESCRIPTION                              VARCHAR (26)
-NO_OF_LIKES                              INTEGER
-USER_ID                                  INTEGER  (FK) references ID column of users table
-CREATED_AT                               TIMESTAMP
-STATUS                                   VARCHAR(26)
- */
 
 @Entity
 @Table(name = "IMAGES", schema = "imagehoster")
 public class ImageEntity implements Serializable {
 
-    //Write the annotation which specifies that id attrribute is a primary key
-    //
     @Id
-    //Write the annotation to explicitly specify the column name as "ID"
-    //
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "UUID")
-    //Write the annotation to specify that uuid can have maximum size of 64
-    //
     @Size(max = 64)
     private String uuid;
 
 
     @Column(name = "IMAGE")
-    private String image; //this is a base64 encoded version of the image
+    private String image;
 
     @Column(name = "NAME")
     private String name;
@@ -57,7 +39,6 @@ public class ImageEntity implements Serializable {
     private long no_of_likes;
 
 
-    //Write the annotation to specify Many to one relationship with users table
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private UserEntity user;
@@ -92,7 +73,6 @@ public class ImageEntity implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-
 
     public String getName() {
         return name;

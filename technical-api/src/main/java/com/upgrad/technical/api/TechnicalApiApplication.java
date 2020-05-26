@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Import;
 public class TechnicalApiApplication {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        SpringApplication.run(TechnicalApiApplication.class,args);
+        SpringApplication.run(TechnicalApiApplication.class, args);
     }
 }
