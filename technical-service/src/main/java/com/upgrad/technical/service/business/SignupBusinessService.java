@@ -18,27 +18,9 @@ public class SignupBusinessService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public UserEntity signup(UserEntity userEntity) {
-
-        //We have added "PasswordCryptographyProvider.java" file and its implementation need not to be focused.(once go through the code)
-        //PasswordCryptographyProvider class contains encrypt() method which takes raw password as an argument and returns an array of String
-        //First element in an array contains Salt attribute.What is Salt attribute?Salt attribute is used in Authentication when user enters the credentials and then we need to encrypt the password entered by the user to match it with the encrypted password stored in the database.
-        //Second element is encrypted password
-
-
-        //Now call the encrypt() method for passwordCryptographyProvider and pass the raw password as an argument
-        //userEntity contains the raw password
-        //Store the value returned by the encrypt() method in an array of String
-        //Write code here//
-
-        String password = userEntity.getPassword();
-        String[] encryptedPass = passwordCryptographyProvider.encrypt(password);
-
-        //Now set the Salt attribute of userEntity as the first element of an array
-        //Set the Password attribute of userEntity as the second element of an array
-        //Write code here//
-
-        userEntity.setSalt(encryptedPass[0]);
-        userEntity.setPassword(encryptedPass[1]);
+        String[] encryptedText = passwordCryptographyProvider.encrypt(userEntity.getPassword());
+        userEntity.setSalt(encryptedText[0]);
+        userEntity.setPassword(encryptedText[1]);
 
         return userDao.createUser(userEntity);
     }

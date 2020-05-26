@@ -3,7 +3,9 @@ com\upgrad\technical\api\model\SignupUserResponse.class
 io\swagger\api\ApiOriginFilter.class
 io\swagger\Swagger2SpringBoot$ExitException.class
 io\swagger\configuration\HomeController.class
+com\upgrad\technical\api\model\AuthorizedUserResponse.class
 com\upgrad\technical\api\TechnicalApiApplication.class
+com\upgrad\technical\api\controller\AuthenticationController.class
 io\swagger\api\ApiResponseMessage.class
 io\swagger\api\NotFoundException.class
 io\swagger\RFC3339DateFormat.class
