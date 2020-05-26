@@ -12,9 +12,6 @@ import org.springframework.web.context.request.WebRequest;
 public class RestExceptionHandler {
 
 
-    //Note that the AuthenticationFailedException is mapped to this method to handle the exception
-    //Write the annotation which can intercept AuthenticationFailedException in this method
-    //Write the annotation here//
     @ExceptionHandler(AuthenticationFailedException.class)
     public ResponseEntity<ErrorResponse> authenticationFailedException(AuthenticationFailedException exc, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(

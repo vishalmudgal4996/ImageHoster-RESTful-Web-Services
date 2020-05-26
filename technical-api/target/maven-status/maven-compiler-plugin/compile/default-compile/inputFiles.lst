@@ -4,13 +4,16 @@ C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\ap
 C:\Users\VishkR\technical\technical-api\src\main\java\com\upgrad\technical\api\config\SwaggerConfiguration.java
 C:\Users\VishkR\technical\technical-api\src\main\java\com\upgrad\technical\api\controller\AuthenticationController.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\RFC3339DateFormat.java
+C:\Users\VishkR\technical\technical-api\target\generated-sources\.\com\upgrad\technical\api\model\ImageUploadResponse.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\Swagger2SpringBoot.java
+C:\Users\VishkR\technical\technical-api\src\main\java\com\upgrad\technical\api\controller\ImageUploadController.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\com\upgrad\technical\api\model\SignupUserRequest.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\com\upgrad\technical\api\model\AuthorizedUserResponse.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\api\NotFoundException.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\api\ApiOriginFilter.java
 C:\Users\VishkR\technical\technical-api\src\main\java\com\upgrad\technical\api\exception\RestExceptionHandler.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\com\upgrad\technical\api\model\SignupUserResponse.java
+C:\Users\VishkR\technical\technical-api\target\generated-sources\.\com\upgrad\technical\api\model\ImageUploadRequest.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\configuration\SwaggerDocumentationConfig.java
 C:\Users\VishkR\technical\technical-api\src\main\java\com\upgrad\technical\api\controller\SignupController.java
 C:\Users\VishkR\technical\technical-api\target\generated-sources\.\io\swagger\api\ApiResponseMessage.java

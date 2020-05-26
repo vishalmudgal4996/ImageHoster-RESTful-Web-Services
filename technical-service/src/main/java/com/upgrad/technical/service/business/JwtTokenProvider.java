@@ -22,8 +22,7 @@ public class JwtTokenProvider {
     public JwtTokenProvider(final String secret) {
         try {
             algorithm = Algorithm.HMAC512(secret);
-        }
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             throw new UnexpectedException(GenericErrorCode.GEN_001);
         }
     }

@@ -22,7 +22,7 @@ public class SignupController {
     @Autowired
     private SignupBusinessService signupBusinessService;
 
-    @RequestMapping(method= RequestMethod.POST, path="/usersignup", consumes= MediaType.APPLICATION_JSON_UTF8_VALUE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/usersignup", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<SignupUserResponse> userSignup(final SignupUserRequest signupUserRequest) {
 
         final UserEntity userEntity = new UserEntity();
@@ -38,6 +38,6 @@ public class SignupController {
 
         final UserEntity createdUserEntity = signupBusinessService.signup(userEntity);
         SignupUserResponse userResponse = new SignupUserResponse().id(createdUserEntity.getUuid()).status("USER SUCCESSFULLY REGISTERED");
-        return new ResponseEntity<SignupUserResponse>(userResponse,HttpStatus.CREATED);
+        return new ResponseEntity<SignupUserResponse>(userResponse, HttpStatus.CREATED);
     }
 }
