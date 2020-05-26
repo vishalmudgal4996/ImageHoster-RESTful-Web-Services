@@ -9,3 +9,4 @@ com\upgrad\technical\service\common\UnexpectedException.class
 com\upgrad\technical\service\business\JwtTokenProvider.class
 com\upgrad\technical\service\common\ErrorCode.class
 com\upgrad\technical\service\business\PasswordCryptographyProvider.class
+com\upgrad\technical\service\exception\AuthenticationFailedException.class

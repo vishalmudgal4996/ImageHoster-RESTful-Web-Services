@@ -15,9 +15,6 @@ import java.time.ZonedDateTime;
 @Table(name = "USER_AUTH_TOKENS", schema = "imagehoster")
 public class UserAuthTokenEntity implements Serializable {
 
-
-    //Define the private attribute "id" of type long which is a primary key, choose a generation strategy as GenerationType.IDENTITY and also explicitly define the column name as "ID"
-    //Write code here//
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,10 +39,6 @@ public class UserAuthTokenEntity implements Serializable {
 
     @Column(name = "LOGOUT_AT")
     private ZonedDateTime logoutAt;
-
-
-    //Generate getter and setter for attribute "id"
-    //Write code here//
 
 
     public long getId() {
