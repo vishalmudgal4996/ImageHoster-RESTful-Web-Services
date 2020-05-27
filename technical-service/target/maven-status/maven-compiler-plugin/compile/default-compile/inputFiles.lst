@@ -5,8 +5,10 @@ C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\s
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\business\AuthenticationService.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\common\ErrorCode.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\common\GenericErrorCode.java
+C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\exception\UnauthorizedException.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\dao\UserDao.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\business\ImageUploadService.java
+C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\exception\UserNotSignedInException.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\business\SignupBusinessService.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\entity\UserEntity.java
 C:\Users\VishkR\technical\technical-service\src\main\java\com\upgrad\technical\service\business\JwtTokenProvider.java

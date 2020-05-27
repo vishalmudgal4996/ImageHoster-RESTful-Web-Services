@@ -5,14 +5,13 @@ import com.upgrad.technical.api.model.ImageDetailsResponse;
 import com.upgrad.technical.service.business.AdminService;
 import com.upgrad.technical.service.entity.ImageEntity;
 import com.upgrad.technical.service.exception.ImageNotFoundException;
+import com.upgrad.technical.service.exception.UnauthorizedException;
+import com.upgrad.technical.service.exception.UserNotSignedInException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
@@ -23,19 +22,12 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping(method = RequestMethod.GET, path = "/images/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<ImageDetailsResponse> getImage(@PathVariable("id") final String imageUuid) throws ImageNotFoundException {
+    public ResponseEntity<ImageDetailsResponse> getImage(@PathVariable("id") final String imageUuid, @RequestHeader("authorization") final String authorization) throws ImageNotFoundException, UnauthorizedException, UserNotSignedInException {
 
-        //Complete this method
-        //Call getImage() method for adminService and pass imageUuid as an argument(note that you get the details of the image after entering its uuid)
-        //getImage() method returns ImageEntity type object
-        //Declare an object of ImageDetailsResponse and set its attributes using ImageEntity type object returned by getImage() method
-        //Return ResponseEntity<ImageDetailsResponse> type object with Http status OK
+        final ImageEntity imageEntity = adminService.getImage(imageUuid, authorization);
 
-        ImageEntity imageEntity = adminService.getImage(imageUuid);
+        ImageDetailsResponse imageDetailsResponse = new ImageDetailsResponse().image(imageEntity.getImage()).id((int) imageEntity.getId()).name(imageEntity.getName()).description(imageEntity.getDescription()).status(imageEntity.getStatus());
 
-        ImageDetailsResponse imageDetailsResponse=new ImageDetailsResponse().image(imageEntity.getImage()).id((int)imageEntity.getId())
-                .name(imageEntity.getName()).description(imageEntity.getDescription()).status(imageEntity.getStatus());
-
-        return new ResponseEntity<ImageDetailsResponse>(imageDetailsResponse,HttpStatus.OK) ;
+        return new ResponseEntity<ImageDetailsResponse>(imageDetailsResponse, HttpStatus.OK);
     }
 }

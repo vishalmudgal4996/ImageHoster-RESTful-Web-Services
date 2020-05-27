@@ -245,8 +245,7 @@
         "properties": {
           "image":{
             "type":"string",
-            "description":"This is the image in Base64 format"
-          },
+          "description":"The image in Base64 format"},
           "id": {
             "type": "integer",
             "description": "Unique identifier of the user in a standard UUID format"
@@ -272,35 +271,14 @@
           "status"
         ],
         "example": {
-          "image":"vfdcvyucdsyu-dfv-dsffds",
+          "image":"asd-fads-sadsc",
           "id": "7d174a25-ba31-45a8-85b4-b06ffc9d5f8f",
           "name": "my_image",
           "description": "This image was taken at 27 aug",
           "status": "REGISTERED"
         }
       },
-      "UpdateImageRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of the image"
-          },
-          "description": {
-            "type": "string",
-            "description": "Description of the image"
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the image"
-          }
-        },
-        "example": {
-          "name": "my_image",
-          "description": "New description",
-          "status": "Active"
-        }
-      },
+
       "ErrorResponse": {
         "type": "object",
         "properties": {
