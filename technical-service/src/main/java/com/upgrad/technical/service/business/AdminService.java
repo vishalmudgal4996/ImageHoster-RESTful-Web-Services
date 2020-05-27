@@ -5,12 +5,17 @@ import com.upgrad.technical.service.dao.ImageDao;
 import com.upgrad.technical.service.dao.UserDao;
 import com.upgrad.technical.service.entity.ImageEntity;
 import com.upgrad.technical.service.entity.UserAuthTokenEntity;
-import com.upgrad.technical.service.entity.UserEntity;
 import com.upgrad.technical.service.exception.ImageNotFoundException;
 import com.upgrad.technical.service.exception.UnauthorizedException;
 import com.upgrad.technical.service.exception.UserNotSignedInException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
 
 @Service
 public class AdminService {
@@ -20,41 +25,56 @@ public class AdminService {
 
     public ImageEntity getImage(final String imageUuid, final String authorization) throws ImageNotFoundException, UnauthorizedException, UserNotSignedInException {
 
-        //Get the record from user_auth_tokens table in UserAuthTokenEntity type object with the received accesstoken
-        //Call getUserAuthToken() method
-        //Write code here//
+        UserAuthTokenEntity userAuthTokenEntity = imageDao.getUserAuthToken(authorization);
 
-        UserAuthTokenEntity userAuthToken = imageDao.getUserAuthToken(authorization);
-
-        //If you get no record, throw user defined exception(UserNotSignedInException, the implementation of UserNotSignedInException has been done)
-        //Pass two String type arguments
-        //First argument is Exception code(e.g. USR-001)
-        //Second argument is Exception message(e.g. You are not Signed in, sign in first to get the image details)
-        //Write code here//
-
-        if(userAuthToken==null){
-            throw new UserNotSignedInException("USR-001","You are not Signed in, sign in first to get the image details");
+        if (userAuthTokenEntity == null) {
+            throw new UserNotSignedInException("USR-001", "You are not Signed in, sign in first to get the details of the image");
         }
 
-
-        //Now we need to check whether the user with corresponding access token is an admin or not
-        //Get user from UserAuthTokenEntity type object and check
-        //If he is an admin then get the image details using getImage() method in ImageDao class else throw UnauthorizedException(user-defined)(UnauthorizedException has been implemented and accepts two arguments, both are Strings, first is Exception code and second is Exception message)
-        //Also throw an ImageNotFoundException if the image uuid is incorrect(ImageNotException has been implemented and accepts two arguments, both are Strings, first is Exception code and second is Exception message)
-        //Write code here//
-
-        final UserEntity user = userAuthToken.getUser();
-        if(user.getRole().equals("admin")){
-            ImageEntity image = imageDao.getImage(imageUuid);
-
-            if(image==null){
-                throw new ImageNotFoundException("IMG-001","Image not found.");
-            }else {
-                return image;
+        String role = userAuthTokenEntity.getUser().getRole();
+        if (role.equals("admin")) {
+            ImageEntity imageEntity = imageDao.getImage(imageUuid);
+            if (imageEntity == null) {
+                throw new ImageNotFoundException("IMG-001", "Image with Uuid not found");
             }
-        }else{
-            throw new UnauthorizedException("UTH-001", "User is not authorized to perform this action.");
+            return imageEntity;
+        } else
+            throw new UnauthorizedException("ATH-001", "UNAUTHORIZED Access, Entered user is not an admin");
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public ImageEntity updateImage(final ImageEntity imageEntity, final String authorization) throws ImageNotFoundException, UnauthorizedException, UserNotSignedInException {
+        //Complete this method
+        //Firstly check whether the access token is a valid one(exists in user_auth_tokens table). If not valid throw UserNotSignedException
+        UserAuthTokenEntity userAuthTokenEntity = imageDao.getUserAuthToken(authorization);
+
+        if (userAuthTokenEntity == null) {
+            throw new UserNotSignedInException("USR-001", "You are not Signed in, sign in first to get the details of the image");
         }
 
+        //Then check the role of the user with entered access token (if nonadmin then throw UnauthorizedException)
+        //If the role is admin, get the existing image in the database with entered image id using getImageById() method in ImageDao class
+        //If the image with entered image id does not exist throw ImageNotFoundException
+        //If the image with entered image id exists in the database and is returned, try to set all the attributes of the new image(received by this method) using the existing image
+        //Call updateImage() method for imageDao to update an image
+        //Note that ImageNotFoundException , UserNotFoundException and UnauthorizedException has been implemented
+        //Note that this method returns ImageEntity type object
+
+        String role = userAuthTokenEntity.getUser().getRole();
+        if (role.equals("admin")) {
+
+            ImageEntity existingimageEntity = imageDao.getImageById(imageEntity.getId());
+            if(existingimageEntity==null){
+                throw new ImageNotFoundException("IMG-001", "Image with id not found");
+            }
+
+            imageEntity.setUuid(existingimageEntity.getUuid());
+            imageEntity.setNo_of_likes(existingimageEntity.getNo_of_likes());
+            imageEntity.setUser_id(existingimageEntity.getUser_id());
+            imageEntity.setCreated_at(existingimageEntity.getCreated_at());
+
+            return imageDao.updateImage(imageEntity);
+        } else
+            throw new UnauthorizedException("ATH-001", "UNAUTHORIZED Access, Entered user is not an admin");
     }
 }

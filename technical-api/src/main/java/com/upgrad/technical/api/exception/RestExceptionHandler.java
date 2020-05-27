@@ -40,14 +40,10 @@ public class RestExceptionHandler {
         );
     }
 
-    //Write a method to map UnauthorizedException to this method to handle the exception
-    //The handler should print the Error code and Error message in the Response body with Http status FORBIDDEN
-    //Write code here//
-
     @ExceptionHandler(UnauthorizedException.class)
     public ResponseEntity<ErrorResponse> unauthorizedException(UnauthorizedException exc, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(
-                new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.UNAUTHORIZED
+                new ErrorResponse().code(exc.getCode()).message(exc.getErrorMessage()), HttpStatus.FORBIDDEN
         );
     }
 

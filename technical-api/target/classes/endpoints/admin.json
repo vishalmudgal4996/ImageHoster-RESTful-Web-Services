@@ -245,7 +245,8 @@
         "properties": {
           "image":{
             "type":"string",
-          "description":"The image in Base64 format"},
+            "description":"This is image in Base64 format"
+          },
           "id": {
             "type": "integer",
             "description": "Unique identifier of the user in a standard UUID format"
@@ -271,14 +272,54 @@
           "status"
         ],
         "example": {
-          "image":"asd-fads-sadsc",
+          "image":"sd-dcsc-vac",
           "id": "7d174a25-ba31-45a8-85b4-b06ffc9d5f8f",
           "name": "my_image",
           "description": "This image was taken at 27 aug",
           "status": "REGISTERED"
         }
       },
+      "UpdateImageRequest": {
+        "type": "object",
 
+        "properties": {
+          "image":{
+            "type":"string",
+            "description":"This is image in Base64 format"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the image"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the image"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the image"
+          }
+        },
+        "example": {
+          "image":"sdfv-sfdv-sf",
+          "name": "my_image",
+          "description": "New description",
+          "status": "Active"
+        }
+      },
+      "UpdateImageResponse":{
+        "type": "object",
+        "properties": {
+          "id":{
+            "type":"integer",
+            "description":"id of the image"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the image"
+          }
+        }
+      },
       "ErrorResponse": {
         "type": "object",
         "properties": {

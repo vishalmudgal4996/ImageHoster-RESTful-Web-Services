@@ -10,17 +10,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * ImageDetailsResponse
+ * UpdateImageRequest
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-05-27T17:24:42.922+05:30")
 
-public class ImageDetailsResponse   {
+public class UpdateImageRequest   {
   @JsonProperty("image")
   private String image = null;
-
-  @JsonProperty("id")
-  private Integer id = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -31,7 +28,7 @@ public class ImageDetailsResponse   {
   @JsonProperty("status")
   private String status = null;
 
-  public ImageDetailsResponse image(String image) {
+  public UpdateImageRequest image(String image) {
     this.image = image;
     return this;
   }
@@ -40,8 +37,7 @@ public class ImageDetailsResponse   {
    * This is image in Base64 format
    * @return image
   **/
-  @ApiModelProperty(required = true, value = "This is image in Base64 format")
-  @NotNull
+  @ApiModelProperty(value = "This is image in Base64 format")
 
 
   public String getImage() {
@@ -52,28 +48,7 @@ public class ImageDetailsResponse   {
     this.image = image;
   }
 
-  public ImageDetailsResponse id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
-  /**
-   * Unique identifier of the user in a standard UUID format
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Unique identifier of the user in a standard UUID format")
-  @NotNull
-
-
-  public Integer getId() {
-    return id;
-  }
-
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  public ImageDetailsResponse name(String name) {
+  public UpdateImageRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -82,8 +57,7 @@ public class ImageDetailsResponse   {
    * Name of the image
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "Name of the image")
-  @NotNull
+  @ApiModelProperty(value = "Name of the image")
 
 
   public String getName() {
@@ -94,7 +68,7 @@ public class ImageDetailsResponse   {
     this.name = name;
   }
 
-  public ImageDetailsResponse description(String description) {
+  public UpdateImageRequest description(String description) {
     this.description = description;
     return this;
   }
@@ -103,8 +77,7 @@ public class ImageDetailsResponse   {
    * Description of the image
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "Description of the image")
-  @NotNull
+  @ApiModelProperty(value = "Description of the image")
 
 
   public String getDescription() {
@@ -115,17 +88,16 @@ public class ImageDetailsResponse   {
     this.description = description;
   }
 
-  public ImageDetailsResponse status(String status) {
+  public UpdateImageRequest status(String status) {
     this.status = status;
     return this;
   }
 
   /**
-   * REGISTERED
+   * Status of the image
    * @return status
   **/
-  @ApiModelProperty(required = true, value = "REGISTERED")
-  @NotNull
+  @ApiModelProperty(value = "Status of the image")
 
 
   public String getStatus() {
@@ -145,26 +117,24 @@ public class ImageDetailsResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ImageDetailsResponse imageDetailsResponse = (ImageDetailsResponse) o;
-    return Objects.equals(this.image, imageDetailsResponse.image) &&
-        Objects.equals(this.id, imageDetailsResponse.id) &&
-        Objects.equals(this.name, imageDetailsResponse.name) &&
-        Objects.equals(this.description, imageDetailsResponse.description) &&
-        Objects.equals(this.status, imageDetailsResponse.status);
+    UpdateImageRequest updateImageRequest = (UpdateImageRequest) o;
+    return Objects.equals(this.image, updateImageRequest.image) &&
+        Objects.equals(this.name, updateImageRequest.name) &&
+        Objects.equals(this.description, updateImageRequest.description) &&
+        Objects.equals(this.status, updateImageRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, id, name, description, status);
+    return Objects.hash(image, name, description, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ImageDetailsResponse {\n");
+    sb.append("class UpdateImageRequest {\n");
     
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
