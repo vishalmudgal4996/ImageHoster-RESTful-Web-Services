@@ -10,15 +10,15 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-05-26T22:42:06.634+05:30")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-05-27T16:02:13.969+05:30")
 
 @Configuration
 public class SwaggerDocumentationConfig {
 
     ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-            .title("Image Upload API")
-            .description("API of Image upload")
+            .title("User Administration API")
+            .description("## API of User Administration Services  This specification describes the endpoints, request/response model of the User Administration API. This API provides REST resources to manage images of Image Hoster application.")
             .license("")
             .licenseUrl("http://unlicense.org")
             .termsOfServiceUrl("")

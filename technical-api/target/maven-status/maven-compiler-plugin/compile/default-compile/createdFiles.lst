@@ -12,6 +12,8 @@ io\swagger\api\ApiOriginFilter.class
 io\swagger\Swagger2SpringBoot$ExitException.class
 com\upgrad\technical\api\exception\RestExceptionHandler.class
 com\upgrad\technical\api\model\ImageUploadRequest.class
+com\upgrad\technical\api\model\UpdateImageRequest.class
+com\upgrad\technical\api\model\ImageDetailsResponse.class
 io\swagger\api\NotFoundException.class
 com\upgrad\technical\api\controller\ImageUploadController.class
 io\swagger\RFC3339DateFormat.class
@@ -19,3 +21,4 @@ com\upgrad\technical\api\model\ImageUploadResponse.class
 com\upgrad\technical\api\model\SignupUserRequest.class
 io\swagger\api\ApiException.class
 io\swagger\configuration\SwaggerDocumentationConfig.class
+com\upgrad\technical\api\controller\AdminController.class

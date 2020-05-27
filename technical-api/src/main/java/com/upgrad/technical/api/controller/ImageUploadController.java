@@ -30,12 +30,8 @@ public class ImageUploadController {
     @Autowired
     private ImageUploadService imageUploadService;
 
-    //This method receives ImageUploadRequest type object and "access token" in authorization header
-    //If it is a valid access token only then the user is allowed to upload an image
     @RequestMapping(method = RequestMethod.POST, path = "/imageupload", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<ImageUploadResponse> imageupload(final ImageUploadRequest imageUploadRequest, @RequestHeader("authorization") final String authorization) throws UploadFailedException, UnsupportedEncodingException {
-
-        //Creating ImageEntity type object and setting its attributes using imageUploadRequest
         final ImageEntity imageEntity = new ImageEntity();
         imageEntity.setImage(imageUploadRequest.getImage());
         imageEntity.setName(imageUploadRequest.getName());
@@ -46,9 +42,7 @@ public class ImageUploadController {
         imageEntity.setStatus("REGISTERED");
 
 
-        //Calling the upload method for imageUploadService
-        //Pass imageEntity and authorization(access token) as arguments
-        final ImageEntity createdimageEntity = imageUploadService.upload(imageEntity,authorization);
+        final ImageEntity createdimageEntity = imageUploadService.upload(imageEntity, authorization);
         ImageUploadResponse imageUploadResponse = new ImageUploadResponse().id(createdimageEntity.getUuid()).status("IMAGE SUCCESSFULLY REGISTERED");
         return new ResponseEntity<ImageUploadResponse>(imageUploadResponse, HttpStatus.CREATED);
     }

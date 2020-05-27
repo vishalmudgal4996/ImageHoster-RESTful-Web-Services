@@ -3,14 +3,18 @@ package com.upgrad.technical.service.exception;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 
-public class UploadFailedException extends Exception {
+public class ImageNotFoundException extends Exception {
+
+
     private final String code;
     private final String errorMessage;
 
-    public UploadFailedException(final String code, final String errorMessage) {
+
+    public ImageNotFoundException(final String code, final String errorMessage) {
         this.code = code;
         this.errorMessage = errorMessage;
     }
+
 
     @Override
     public void printStackTrace() {
@@ -34,5 +38,4 @@ public class UploadFailedException extends Exception {
     public String getErrorMessage() {
         return errorMessage;
     }
-
 }

@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 @Repository
 public class ImageDao {
 
-
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -21,14 +20,17 @@ public class ImageDao {
     }
 
     public UserAuthTokenEntity getUserAuthToken(final String accesstoken) {
-        //Complete this method to get the record from user_auth_tokens table with corresponding accesstoken received as an argument
-        //This method returns UserAuthTokenEntity type object if the record is found and returns null if NoResultException is caught
-        //Examine the query that has been written in UserAuthTokenEntity
-        //Write code here//
-        try{
-            return entityManager.createNamedQuery("userAuthTokenByAccessToken",UserAuthTokenEntity.class)
-                    .setParameter("accessToken",accesstoken).getSingleResult();
-        }catch (NoResultException e){
+        try {
+            return entityManager.createNamedQuery("userAuthTokenByAccessToken", UserAuthTokenEntity.class).setParameter("accessToken", accesstoken).getSingleResult();
+        } catch (NoResultException nre) {
+            return null;
+        }
+    }
+
+    public ImageEntity getImage(final String imageUuid) {
+        try {
+            return entityManager.createNamedQuery("ImageEntityByUuid", ImageEntity.class).setParameter("uuid", imageUuid).getSingleResult();
+        } catch (NoResultException nre) {
             return null;
         }
     }
